@@ -1,6 +1,6 @@
 import asyncio
-from argparse import ArgumentParser
 import os
+from argparse import ArgumentParser
 
 import asyncpraw
 from loguru import logger
