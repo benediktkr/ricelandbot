@@ -32,6 +32,10 @@ async def modmail(reddit, sub, matrix):
         if item.author.name == "AutoModerator" and ignore_automod:
             continue
 
+        if "has received reports" in item.body:
+            # handled by riceland.reddit.reports
+            continue
+
         header = f"{mail} **{subject}** <br>{author} -> {dest}"
         msg = f"{header}\n{body}"
         await matrix.sendmsg(msg)
