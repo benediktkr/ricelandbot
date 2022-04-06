@@ -1,5 +1,6 @@
 import asyncio
 from argparse import ArgumentParser
+import os
 
 import asyncpraw
 from loguru import logger
@@ -34,6 +35,11 @@ def main():
     parser.add_argument("-r", "--subreddit")
     parser.add_argument("-s", "--show-existing", action="store_true")
     args = parser.parse_args()
+
+    logfile = os.environ.get("LOGFILE")
+    if logfile is not None:
+        logger.remove()
+        logger.add(logfile)
 
     try:
         asyncio.run(asyncmain(args))
