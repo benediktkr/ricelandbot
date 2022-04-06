@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "ricelandbot"
+version = "0.1.0"
+description = ""
+authors = ["Benedikt Kristinsson <benedikt@lokun.is>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+loguru = "^0.6.0"
+asyncpraw = "^7.5.0"
+aiohttp-retry = "^2.4.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+
+[tool.poetry.scripts]
+callback_auth = "ricelandbot.callback_auth:main"
+ricelandbot = "ricelandbot.main:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+skip = [".gitignore", ".dockerignore", ".git", "tests"]
+extend_skip = [".md", ".json", ".toml"]
+multi_line_output = 9
+profile = "black"
+line_length = 79
+quiet = true
