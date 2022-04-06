@@ -47,5 +47,5 @@ RUN python3 -m pip install /tmp/ricelandbot-*.tar.gz && \
         rm -v /tmp/ricelandbot-*.tar.gz /tmp/requirements.txt
 
 HEALTHCHECK --start-period=5s --interval=15s --timeout=1s \
-        CMD pgrep
+        CMD pgrep ricelandbot
 CMD ["ricelandbot"]
