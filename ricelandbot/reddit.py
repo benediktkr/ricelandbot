@@ -21,6 +21,7 @@ def quote_lines(body):
 async def modmail(reddit, sub, matrix):
     subreddit = await reddit.subreddit(sub)
     s_e = reddit.config.custom['skip_existing']
+    ignore_automod = reddit.config.custom.get("ignore_automod", False)
 
     async for item in subreddit.mod.stream.unread(skip_existing=s_e):
         author = get_reddit_u_r(item.author)
@@ -28,7 +29,7 @@ async def modmail(reddit, sub, matrix):
         subject = item.subject
         body = quote_lines(item.body)
 
-        if item.author.name == "AutoModerator":
+        if item.author.name == "AutoModerator" and ignore_automod:
             continue
 
         header = f"{mail} **{subject}** <br>{author} -> {dest}"
