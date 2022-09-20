@@ -1,3 +1,3 @@
 @Library('shared-jenkins-pipelines') _
 
-dockerimg tag: 'latest', dockreg: 'git.sudo.is/ops'
+dockerimg tag: 'latest', dockreg: 'git.sudo.is/internal'
